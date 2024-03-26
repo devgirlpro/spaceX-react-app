@@ -1,0 +1,35 @@
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    min-width: 100vw;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+    width: fit-content;
+}
+
+/* .rocket-card-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+} */
+
+.rocket-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin: 10px;
+    width: calc(50% - 20px);
+}
+
+.rocket-image {
+    width: 200px; /* Ensure image spans the full card width */
+    height: 200px; /* Set image height */
+    object-fit: contain; /* Maintain aspect ratio and prevent stretching */
+    margin-bottom: 10px;
+}

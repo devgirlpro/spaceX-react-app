@@ -1,5 +1,5 @@
 import './App.css';
-import Rockets from './components/Rockets';
+import RocketsCard from './components/RocketsCard';
 
 function App() {
   return (
@@ -7,7 +7,7 @@ function App() {
       <header className="App-header">
         <h1>spaceX React App</h1>
       </header>
-      <Rockets />
+      <RocketsCard />
     </div>
   );
 }

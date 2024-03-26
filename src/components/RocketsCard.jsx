@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './rockets.css';
+import Modal from './Modal';
 
-const Rockets = () => {
+const RocketsCard = () => {
     const [rocketsInfo, setRocketsInfo] = useState([]);
 
     const [isLoading, setIsLoading] = useState(false);
@@ -30,19 +31,21 @@ const Rockets = () => {
 
     return (
         <>
-            <div className='wrapper'>
+            <div className='container'>
                 {rocketsInfo.map((rocket) => {
                     return (
-                        <div key={rocket.id} className='rocket-card'>
+                        <div key={rocket.id} className='card'>
                             <img
                                 src={rocket.flickr_images[1]}
                                 alt={rocket.name}
                                 className='rocket-image lazyload'
                             />
-                            <div className='rocket-content'>
+                            <div className='content'>
                                 <h5>{rocket.name}</h5>
                                 <p>{rocket.description}</p>
-                                <a href={rocket.wikipedia}>Wikipedia</a>
+                                <a href={rocket.wikipedia} className='btn'>
+                                    view more
+                                </a>
 
                                 <hr />
                             </div>
@@ -50,8 +53,9 @@ const Rockets = () => {
                     );
                 })}
             </div>
+            <Modal />
         </>
     );
 };
 
-export default Rockets;
+export default RocketsCard;

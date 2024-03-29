@@ -39,19 +39,55 @@
     cursor: pointer;
 }
 
-.modalContainer .body {
+/* .modalContainer .body {
     flex: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1.7rem;
     text-align: center;
+} */
+
+.modalContainer .body {
+    flex: 50%;
+    display: flex;
+    flex-direction: column; /* Ensure images stack vertically */
+    justify-content: center;
+    align-items: center;
+    font-size: 1.7rem;
+    text-align: center;
+    overflow: hidden; /* Hide image overflow for slideshow */
 }
 
-.modalContainer .body img {
+/* .modalContainer .body img {
     width: 200px;
     height: 200px;
     object-fit: fill;
+} */
+
+.modalContainer .body .image-container {
+    position: relative;
+    width: 100%;
+    height: 400px; /* Adjust height as needed */
+    margin-bottom: 20px; /* Space between images and text content */
+}
+
+.modalContainer .body .image-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure image covers container */
+    transition: transform 0.5s ease-in-out; /* Smooth image transitions */
+}
+
+.modalContainer .body .image-container img.active {
+    transform: scale(1);
+}
+
+.modalContainer .body .image-container img:not(.active) {
+    transform: scale(0);
 }
 
 .modalContainer .footer {

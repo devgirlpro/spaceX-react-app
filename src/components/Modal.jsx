@@ -5,39 +5,54 @@ const Modal = ({ closeModalPage, rocket }) => {
     const logRocket = (rocket) => {
         console.log('logRocket ===>', rocket);
     };
+
     return (
         <div className='modalBackground'>
             <div className='modalContainer'>
                 <div className='titleCloseBtn'>
                     <button onClick={closeModalPage}>X</button>
                 </div>
-                <div className='title'>
-                    {rocket && <h1>{rocket.name}</h1> }
-                </div>
+                <div className='title'>{rocket && <h1>{rocket.name}</h1>}</div>
                 <div className='body'>
-                    {rocket && (
-                        <>
-                            <img
-                                src={rocket.flickr_images[1]}
-                                alt={rocket.name}
-                            />
-                            <p>Country: {rocket.country}</p>
-                            <p>Company: {rocket.company}</p>
-                            <p>Height (meters): {rocket.height.meters}</p>
-                            {/* Add more info as needed from the `rocket` object */}
-                        </>
-                    )}
-                    {/* <img
-                        src={rocketsInfo.flickr_images[1]}
-                        alt={rocketsInfo.name}
-                    /> */}
-                    {/* <p>{rocketsInfo.country}</p> */}
-                    {/* <p>{rocketsInfo.company}</p> */}
-                    {/* <p>{rocketsInfo.height.meters}</p> */}
+                    <div className='image-container'>
+                        {rocket &&
+                            rocket.flickr_images.map((imageUrl, index) => (
+                                <img key={index} src={imageUrl} alt='Image' />
+                            ))}
+                    </div>
+                    <div className='content'>
+                        <div>
+                            <h4>Country</h4> <p>{rocket.country}</p>
+                        </div>
+                        <div>
+                            <h4>company</h4>
+                            <p>{rocket.company}</p>
+                        </div>
+                        <div>
+                            <h4>Height</h4>
+                            <p>{rocket.height.feet} Feet</p>
+                        </div>
+                        <div>
+                            <h4>Diameter</h4>
+                            <p>{rocket.diameter.feet} Feet</p>
+                        </div>
+                        <div>
+                            <h4>Mass</h4>
+                            <p>{rocket.mass.kg / 1000} Tonne</p>
+                        </div>
+                        <div>
+                            <h4>Active</h4>
+                            <p>{rocket.active ? 'YES' : 'NO'}</p>
+                        </div>
+                        <div>
+                            <h4>Cost/Launch</h4>
+                            <p>{rocket.cost_per_launch / 1000000} Million</p>
+                        </div>
+                    </div>
                 </div>
                 <div className='footer'>
-                    <button id='cancleBtn' onClick={closeModalPage}>
-                        Cancle
+                    <button id='cancelBtn' onClick={closeModalPage}>
+                        Cancel
                     </button>
                     <button onClick={logRocket}>Continue</button>
                 </div>

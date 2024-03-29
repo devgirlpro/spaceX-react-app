@@ -1,34 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import './rockets.css';
-import Modal from './Modal';
+import './Rockets.css';
 
-const RocketsCard = () => {
-    const [rocketsInfo, setRocketsInfo] = useState([]);
-
-    const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState(null);
-
-    const rocketsApiLink = 'https://api.spacexdata.com/v4/rockets';
-
-    const fetchRockets = async () => {
-        setIsLoading(true);
-        setError(null);
-        try {
-            const response = await fetch(rocketsApiLink);
-            const data = await response.json();
-            console.log('data => ', data);
-            setRocketsInfo(data);
-        } catch (error) {
-            setError(error);
-        } finally {
-            setIsLoading(false);
-        }
-    };
-
-    useEffect(() => {
-        fetchRockets();
-    }, []);
-
+const RocketsCard = ({ rocketsInfo, openModalPage }) => {
     return (
         <>
             <div className='container'>
@@ -43,17 +16,15 @@ const RocketsCard = () => {
                             <div className='content'>
                                 <h5>{rocket.name}</h5>
                                 <p>{rocket.description}</p>
-                                <a href={rocket.wikipedia} className='btn'>
+                                <a onClick={openModalPage} className='btn'>
                                     view more
                                 </a>
-
                                 <hr />
                             </div>
                         </div>
                     );
                 })}
             </div>
-            <Modal />
         </>
     );
 };

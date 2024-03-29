@@ -48,6 +48,12 @@
     text-align: center;
 }
 
+.modalContainer .body img {
+    width: 200px;
+    height: 200px;
+    object-fit: fill;
+}
+
 .modalContainer .footer {
     flex: 20%;
     display: flex;

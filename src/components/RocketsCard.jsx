@@ -16,9 +16,13 @@ const RocketsCard = ({ rocketsInfo, openModalPage }) => {
                             <div className='content'>
                                 <h5>{rocket.name}</h5>
                                 <p>{rocket.description}</p>
-                                <a onClick={openModalPage} className='btn'>
-                                    view more
-                                </a>
+                                {rocketsInfo.length > 0 && (
+                                    <a
+                                        onClick={() => openModalPage(rocket)}
+                                        className='btn'>
+                                        view more
+                                    </a>
+                                )}
                                 <hr />
                             </div>
                         </div>

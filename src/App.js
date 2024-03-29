@@ -8,7 +8,8 @@ function App() {
 
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [openModal, setOpenModal] = useState(false)
+  const [openModal, setOpenModal] = useState(false);
+  const [selectedRocket, setSelectedRocket] = useState(null);
 
 
   const rocketsApiLink = 'https://api.spacexdata.com/v4/rockets';
@@ -32,8 +33,10 @@ function App() {
     fetchRockets();
   }, []);
 
-  const openModalFunc = () => {
+  const openModalFunc = (rocket) => {
     setOpenModal(true)
+    setSelectedRocket(rocket)
+    console.log("Rocket From APP:JS ==>", rocket.name)
   }
 
   const closeModalFunc = () => {
@@ -46,7 +49,8 @@ function App() {
         <h1>spaceX React App</h1>
       </header>
       <RocketsCard rocketsInfo={rocketsInfo} openModalPage={openModalFunc} />
-      {openModal && <Modal rocketsInfo={rocketsInfo} closeModalPage={closeModalFunc} />}
+      {openModal && rocketsInfo.length > 0 && <Modal closeModalPage={closeModalFunc} openModalPage={openModalFunc} rocket={selectedRocket} />}
+
     </div>
   );
 }

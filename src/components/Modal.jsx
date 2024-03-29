@@ -1,7 +1,10 @@
 import React from 'react';
 import './Modal.css';
 
-const Modal = ({ closeModalPage }) => {
+const Modal = ({ closeModalPage, rocket }) => {
+    const logRocket = (rocket) => {
+        console.log('logRocket ===>', rocket);
+    };
     return (
         <div className='modalBackground'>
             <div className='modalContainer'>
@@ -9,10 +12,21 @@ const Modal = ({ closeModalPage }) => {
                     <button onClick={closeModalPage}>X</button>
                 </div>
                 <div className='title'>
-                    {/* <h1>{rocketsInfo.name}</h1> */}
-                    <h1>Title modal page</h1>
+                    {rocket && <h1>{rocket.name}</h1> }
                 </div>
                 <div className='body'>
+                    {rocket && (
+                        <>
+                            <img
+                                src={rocket.flickr_images[1]}
+                                alt={rocket.name}
+                            />
+                            <p>Country: {rocket.country}</p>
+                            <p>Company: {rocket.company}</p>
+                            <p>Height (meters): {rocket.height.meters}</p>
+                            {/* Add more info as needed from the `rocket` object */}
+                        </>
+                    )}
                     {/* <img
                         src={rocketsInfo.flickr_images[1]}
                         alt={rocketsInfo.name}
@@ -20,19 +34,12 @@ const Modal = ({ closeModalPage }) => {
                     {/* <p>{rocketsInfo.country}</p> */}
                     {/* <p>{rocketsInfo.company}</p> */}
                     {/* <p>{rocketsInfo.height.meters}</p> */}
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Neque est ab, eius inventore id voluptatum
-                        necessitatibus quia minus. Maiores, nobis. Doloremque,
-                        earum! Exercitationem molestiae amet ipsa repellendus
-                        commodi odit id!
-                    </p>
                 </div>
                 <div className='footer'>
                     <button id='cancleBtn' onClick={closeModalPage}>
                         Cancle
                     </button>
-                    <button>Continue</button>
+                    <button onClick={logRocket}>Continue</button>
                 </div>
             </div>
         </div>

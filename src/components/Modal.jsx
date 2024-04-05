@@ -20,34 +20,42 @@ const Modal = ({ closeModalPage, rocket }) => {
                                 <img key={index} src={imageUrl} alt='Image' />
                             ))}
                     </div>
-                    <div className='content'>
-                        <div>
+                    <div className='modalContent'>
+
+                        <div className='modalContentBox'>
                             <h4>Country</h4> <p>{rocket.country}</p>
                         </div>
-                        <div>
+
+                        <div className='modalContentBox'>
                             <h4>company</h4>
                             <p>{rocket.company}</p>
                         </div>
-                        <div>
+
+                        <div className='modalContentBox'>
                             <h4>Height</h4>
                             <p>{rocket.height.feet} Feet</p>
                         </div>
-                        <div>
+
+                        <div className='modalContentBox'>
                             <h4>Diameter</h4>
                             <p>{rocket.diameter.feet} Feet</p>
                         </div>
-                        <div>
+
+                        <div className='modalContentBox'>
                             <h4>Mass</h4>
                             <p>{rocket.mass.kg / 1000} Tonne</p>
                         </div>
-                        <div>
+
+                        <div className='modalContentBox'>
                             <h4>Active</h4>
                             <p>{rocket.active ? 'YES' : 'NO'}</p>
                         </div>
-                        <div>
+
+                        <div className='modalContentBox'>
                             <h4>Cost/Launch</h4>
                             <p>{rocket.cost_per_launch / 1000000} Million</p>
                         </div>
+                        
                     </div>
                 </div>
                 <div className='footer'>
